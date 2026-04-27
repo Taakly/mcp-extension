@@ -1,0 +1,55 @@
+{
+    "manifest_version": "0.2",
+    "name": "taakly",
+    "display_name": "Taakly — Freelancer Cockpit",
+    "version": "1.0.0",
+    "description": "Conecta Claude con Taakly. Registra horas, consulta clientes y gestiona proyectos con lenguaje natural.",
+    "author": {
+          "name": "Taakly",
+          "email": "support@taakly.com",
+          "url": "https://github.com/Taakly"
+    },
+    "repository": {
+          "type": "git",
+          "url": "https://github.com/Taakly/mcp-extension"
+    },
+    "homepage": "https://taakly.com",
+    "documentation": "https://taakly.com/mcp",
+    "support": "https://taakly.com/mcp",
+    "icon": "icon.png",
+    "server": {
+          "type": "node",
+          "entry_point": "server/index.js",
+          "mcp_config": {
+                  "command": "node",
+                  "args": ["${__dirname}/server/index.js"],
+                  "env": {
+                            "TAAKLY_API_KEY": "${user_config.api_key}"
+                  }
+          }
+    },
+    "tools": [
+          {"name": "get_clients", "description": "Lista tus clientes activos en Taakly"},
+          {"name": "get_projects", "description": "Consulta proyectos, opcionalmente filtrados por cliente"},
+          {"name": "get_active_timer", "description": "Devuelve el timer activo o null si no hay ninguno"},
+          {"name": "start_timer", "description": "Inicia un timer para un cliente y proyecto"},
+          {"name": "stop_timer", "description": "Detiene el timer activo y guarda la duracion"},
+          {"name": "log_time", "description": "Registra una entrada de tiempo manual"}
+    ],
+    "keywords": ["freelancer", "time-tracking", "invoicing", "zzp", "productivity"],
+    "license": "MIT",
+    "compatibility": {
+          "claude_desktop": ">=1.0.0",
+          "platforms": ["darwin", "win32", "linux"],
+          "runtimes": {"node": ">=18.0.0"}
+    },
+    "user_config": {
+          "api_key": {
+                  "type": "string",
+                  "title": "API Key de Taakly",
+                  "description": "Tu clave personal de Taakly. Encuentrala en Taakly → Configuracion → Conector MCP.",
+                  "sensitive": true,
+                  "required": true
+          }
+    }
+}
