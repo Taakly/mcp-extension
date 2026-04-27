@@ -1,0 +1,21 @@
+{
+    "name": "taakly-mcp-server",
+    "version": "1.0.0",
+    "description": "Taakly Desktop Extension for Claude",
+    "type": "module",
+    "main": "server/index.js",
+    "author": "Taakly <support@taakly.com>",
+    "license": "MIT",
+    "homepage": "https://taakly.com/mcp",
+    "repository": {
+          "type": "git",
+          "url": "https://github.com/Taakly/mcp-extension"
+    },
+    "dependencies": {
+          "@modelcontextprotocol/sdk": "^1.10.2",
+          "zod": "^3.22.4"
+    },
+    "engines": {
+          "node": ">=18.0.0"
+    }
+}
